@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!--
+   Filename: 			TicketPrices.xml
+   Supporting Files: 	TicketPrices.dtd, TicketPrices.xsl, TicketPrices.xsd
+-->
+<?xml-stylesheet type="text/xsl" href="TicketPrices.xsl"?>
+<!DOCTYPE prices SYSTEM "TicketPrices.dtd">
+
+<prices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="TicketPrices.xsd" xmlns:html="http://www.w3.org/1999/xhtml">
+	<ticketPrice format="STANDARD">
+		<hall type="IMAX">
+			<weekday>15</weekday>
+			<weekend>18 – 32</weekend>
+		</hall>
+		<hall type="LUXE">
+			<weekday>20 – 40</weekday>
+			<weekend>22 – 42</weekend>
+		</hall>
+		<hall type="BEANIE">
+			<weekday>50 – 60</weekday>
+			<weekend>52 – 62</weekend>
+		</hall>
+		<hall type="INDULGE">
+			<weekday>90 – 120</weekday>
+			<weekend>92 – 122</weekend>
+		</hall>
+	</ticketPrice>
+
+	<ticketPrice format="2D">
+		<hall type="IMAX">
+			<weekday>18 – 32</weekday>
+			<weekend>20 – 34</weekend>
+		</hall>
+		<hall type="LUXE">
+			<weekday>23 – 43</weekday>
+			<weekend>25 – 46</weekend>
+		</hall>
+		<hall type="BEANIE">
+			<weekday>53 – 63</weekday>
+			<weekend>55 – 66</weekend>
+		</hall>
+		<hall type="INDULGE">
+			<weekday>93 – 123</weekday>
+			<weekend>96 – 126</weekend>
+		</hall>
+	</ticketPrice>
+	
+	<ticketPrice format="3D">
+		<hall type="IMAX">
+			<weekday>RM 21 – RM 36</weekday>
+			<weekend>RM 24 – RM 38</weekend>
+		</hall>
+		<hall type="LUXE">
+			<weekday>RM 27 – RM 47</weekday>
+			<weekend>RM 30 – RM 50</weekend>
+		</hall>
+		<hall type="BEANIE">
+			<weekday>RM 57 – RM 67</weekday>
+			<weekend>RM 60 – RM 74</weekend>
+		</hall>
+		<hall type="INDULGE">
+			<weekday>RM 97 – RM 127</weekday>
+			<weekend>RM 100 – RM 130</weekend>
+		</hall>
+	</ticketPrice>
+	<note>
+		<heading>Note : </heading>
+		<description>Weekdays represent Monday to Thursday and Weekends represent Friday to Sundays.</description>
+	</note>
+</prices>

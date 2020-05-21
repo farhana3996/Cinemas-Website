@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!--
+   Filename:         Orders.xsd
+   Supporting Files: 
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"> 
+
+	<xs:element name="customers"> 
+		<xs:complexType> 
+			<xs:sequence> 
+				<xs:element ref="customer" minOccurs="1" maxOccurs="unbounded"/> 
+			</xs:sequence>		
+		</xs:complexType> 
+	</xs:element>
+
+	<xs:element name="customer">
+		<xs:complexType> 
+			<xs:sequence>
+				<xs:element name="name" type="xs:string"/>
+				<xs:element name="address" type="xs:string"/>
+				<xs:element name="phone" type="xs:string"/>
+				<xs:element name="email" type="xs:string"/>
+				<xs:element ref="orders"/>
+			</xs:sequence>
+			<xs:attribute name="custID" type="custID" use="required"/> 
+			<xs:attribute name="gender" type="xs:string" use="required"/> 
+		</xs:complexType> 
+	</xs:element>
+		
+	<xs:element name="orders"> 
+		<xs:complexType> 
+			<xs:sequence> 
+				<xs:element ref="order" minOccurs="1" maxOccurs="unbounded"/> 
+			</xs:sequence>	
+		</xs:complexType> 
+	</xs:element>
+	
+	<xs:element name="order"> 
+		<xs:complexType> 
+			<xs:sequence> 
+				<xs:element ref="tickets"/> 
+			</xs:sequence>	
+			<xs:attribute name="orderID" type="orderID" use="required"/> 
+			<xs:attribute name="orderDate" type="xs:string" use="required"/> 	
+		</xs:complexType> 
+	</xs:element>
+	
+	<xs:element name="tickets"> 
+		<xs:complexType> 
+			<xs:sequence> 
+				<xs:element ref="ticket" minOccurs="1" maxOccurs="unbounded"/> 
+			</xs:sequence>		
+		</xs:complexType> 
+	</xs:element>
+	
+	<xs:element name="ticket"> 
+		<xs:complexType> 
+			<xs:simpleContent> 
+				<xs:extension base="xs:string"> 
+					<xs:attribute name="ticketPrice" type="xs:decimal" use="required"/> 
+					<xs:attribute name="hallType" type="hallType" use="required"/> 		
+					<xs:attribute name="ticketQty" type="xs:positiveInteger" use="required"/> 	
+				</xs:extension> 
+			</xs:simpleContent> 
+		</xs:complexType> 
+	</xs:element>	
+	
+	<xs:simpleType name="custID"> 
+		<xs:restriction base="xs:ID"> 
+			<xs:pattern value="CU-\d{3}"/> 
+		</xs:restriction> 
+	</xs:simpleType> 
+	
+	<xs:simpleType name="orderID"> 
+		<xs:restriction base="xs:ID"> 
+			<xs:pattern value="OR-\d{3}"/> 
+		</xs:restriction> 
+	</xs:simpleType>
+
+	<xs:simpleType name="genderType"> 
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Male"/>
+			<xs:enumeration value="Female"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction> 
+	</xs:simpleType>
+	
+	<xs:simpleType name="hallType"> 
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IMAX"/>
+			<xs:enumeration value="LUXE"/>
+			<xs:enumeration value="BEANIE"/>
+			<xs:enumeration value="INDULGE"/>
+		</xs:restriction> 
+	</xs:simpleType>
+	
+</xs:schema> 

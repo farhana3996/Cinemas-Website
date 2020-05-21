@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+   Filename:         Theatres.xsd
+   Supporting Files: 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:element name="theatres">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="theatre" maxOccurs="unbounded"/>
+            </xs:sequence>            
+        </xs:complexType>    
+    </xs:element>
+	
+	<xs:element name="theatre">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string"/>
+				<xs:element ref="location"/>
+			</xs:sequence>
+			<xs:attribute name="theatreID" type="idType" use="required"/> 
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="location">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="city" type="xs:string"/>
+				<xs:element name="address" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:simpleType name="idType"> 
+		<xs:restriction base="xs:ID"> 
+			<xs:pattern value="TH-\d{3}"/> 
+		</xs:restriction> 
+	</xs:simpleType> 
+</xs:schema>

@@ -1,0 +1,24 @@
+<!--
+   Filename:         MovieList.dtd
+   Supporting Files: 
+-->
+
+<!ELEMENT movies (movie+)> 
+
+<!ELEMENT movie (title, director, duration, sessions, casts, synopsis)>
+<!ATTLIST movie movieID ID #REQUIRED>	
+<!ATTLIST movie genre CDATA #REQUIRED>	
+<!ATTLIST movie language CDATA #REQUIRED>	
+<!ATTLIST movie rating CDATA #REQUIRED>	
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT director (#PCDATA)>
+<!ELEMENT duration (#PCDATA)>
+
+<!ELEMENT sessions (session+)>
+<!ELEMENT session (#PCDATA)>
+
+<!ELEMENT casts (cast+)>
+<!ELEMENT cast (#PCDATA)>
+
+<!ELEMENT synopsis (#PCDATA)>

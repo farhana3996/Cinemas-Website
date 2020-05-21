@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+   Filename:         MovieList.xsd
+   Supporting Files: 
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"> 
+
+	<xs:element name="movies"> 
+		<xs:complexType> 
+			<xs:sequence> 
+				<xs:element ref="movie" minOccurs="1" maxOccurs="unbounded"/> 
+			</xs:sequence>		
+		</xs:complexType> 
+	</xs:element>
+
+	<xs:element name="movie">
+		<xs:complexType> 
+			<xs:sequence>
+				<xs:element name="title" type="xs:string"/>
+				<xs:element name="director" type="xs:string"/>
+				<xs:element name="duration" type="xs:string"/>
+				<xs:element ref="sessions"/>
+				<xs:element ref="casts"/>
+				<xs:element name="synopsis"/>
+			</xs:sequence>
+			<xs:attribute name="movieID" type="idType" use="required"/> 
+			<xs:attribute name="genre" type="xs:string" use="required"/> 
+			<xs:attribute name="language" type="xs:string" use="required"/> 
+			<xs:attribute name="rating" type="ratingType" use="required"/> 
+		</xs:complexType> 
+	</xs:element>
+	
+	<xs:element name="sessions"> 
+		<xs:complexType> 
+			<xs:sequence> 
+				<xs:element name="session" type="xs:string" minOccurs="0" maxOccurs="unbounded"/> 
+			</xs:sequence>	
+		</xs:complexType> 
+	</xs:element>
+	
+	<xs:element name="casts"> 
+		<xs:complexType> 
+			<xs:sequence> 
+				<xs:element name="cast" type="xs:string" minOccurs="0" maxOccurs="unbounded"/> 
+			</xs:sequence>	
+		</xs:complexType> 
+	</xs:element>
+	
+	<xs:simpleType name="idType"> 
+		<xs:restriction base="xs:ID"> 
+			<xs:pattern value="M-\d{2}"/> 
+		</xs:restriction> 
+	</xs:simpleType> 
+
+	<xs:simpleType name="ratingType"> 
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="U"/>
+			<xs:enumeration value="P13"/>
+			<xs:enumeration value="18"/>
+		</xs:restriction> 
+	</xs:simpleType>
+	
+</xs:schema> 

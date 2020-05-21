@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+   Filename: 			User.xml
+   Supporting Files: 	User.xsl, User.xsd, User.dtd
+-->
+<?xml-stylesheet type="text/xsl" href="User.xsl"?>
+<!DOCTYPE users SYSTEM "User.dtd">
+
+<users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="User.xsd" xmlns:html="http://www.w3.org/1999/xhtml">
+	<user userID="US-001" passportNumber="A3611249">
+		<loginInfo>
+			<username>Sarah</username>
+			<email>sarahali@gmail.com</email>
+			<phoneNo>010-304 6215</phoneNo>
+		</loginInfo>
+		<profileInfo>
+			<fullname gender="Female">Sarah Ali</fullname>
+			<dateOfBirth>1988-03-18</dateOfBirth>
+			<nationality>American</nationality>
+			<maritalStatus>Single</maritalStatus>
+			<address>
+				<location>Jln Tasik 1 Tmn Tasik, Reed Lake</location>
+				<postalCode>475</postalCode>
+			</address>
+		</profileInfo>
+	</user>
+	
+	<promotions>
+		<promo id="PR-001">
+			<title>Apply GSC HLB Credit Card now!</title>
+			<validDate>
+				<from>2018-06-26</from>
+				<to>2019-06-19</to>
+			</validDate>
+		</promo>
+		
+		<promo id="PR-002">
+			<title>Sunny Day Burger</title>
+			<validDate>
+				<from>2018-09-21</from>
+				<to>2018-10-31</to>
+			</validDate>
+		</promo>
+		
+		<promo id="PR-003">
+			<title>Ayataka Combo</title>
+			<validDate>
+				<from>2018-08-31</from>
+				<to>2018-10-31</to>
+			</validDate>
+		</promo>
+		
+		<promo id="PR-004">
+			<title>Standard Chartered 1 for 1</title>
+			<validDate>
+				<from>2018-07-23</from>
+				<to>2018-12-31</to>
+			</validDate>
+		</promo>
+		
+		<promo id="PR-005">
+			<title>Cheesy Chicken Strips</title>
+			<validDate>
+				<from>2018-03-08</from>
+				<to>2019-02-24</to>
+			</validDate>
+		</promo>
+	</promotions>
+</users>

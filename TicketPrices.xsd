@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+   Filename:         TicketPrices.xsd
+   Supporting Files: 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:element name="prices">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ticketPrice" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="note" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>  
+        </xs:complexType>    
+    </xs:element>
+	
+	<xs:element name="ticketPrice">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="hall" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+				<xs:attribute name="format" type="formatType" use="required"/>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="hall">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="weekday" type="xs:string"/>
+				<xs:element name="weekend" type="xs:string"/>
+			</xs:sequence>
+				<xs:attribute name="type" type="hallType" use="required"/> 
+		</xs:complexType>
+	</xs:element>
+		
+	<xs:simpleType name="formatType"> 
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="STANDARD"/>
+			<xs:enumeration value="2D"/>
+			<xs:enumeration value="3D"/>
+		</xs:restriction> 
+	</xs:simpleType>
+	
+	<xs:simpleType name="hallType"> 
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IMAX"/>
+			<xs:enumeration value="LUXE"/>
+			<xs:enumeration value="BEANIE"/>
+			<xs:enumeration value="INDULGE"/>
+		</xs:restriction> 
+	</xs:simpleType>
+	
+	<xs:element name="note"> 
+		<xs:complexType> 
+			<xs:sequence> 
+				<xs:element name="heading" type="xs:string"/>
+				<xs:element name="description" type="xs:string"/>
+			</xs:sequence> 
+		</xs:complexType> 
+	</xs:element>	
+
+</xs:schema>

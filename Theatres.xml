@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--
+   Filename: 			Theatres.xml
+   Supporting Files: 	Theatres.xsl, Theatres.xsd, Theatres.dtd
+-->
+<!DOCTYPE theatres SYSTEM "Theatres.dtd">
+<?xml-stylesheet type="text/xsl" href="Theatres.xsl"?>
+
+<theatres xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="Theatres.xsd" xmlns:html="http://www.w3.org/1999/xhtml">
+	<theatre theatreID="TH-001">
+		<name>1 Utama</name>
+		<location>		
+			<city>Petaling Jaya</city>
+			<address>
+				Level 3,
+				1 Utama,
+				1, Lebuh Bandar Utama,
+				Bandar Utama,
+				47800 Petaling Jaya,
+				Selangor
+			</address>
+		</location>
+	</theatre>
+	
+	<theatre theatreID="TH-002">
+		<name>1st Avenue</name>
+		<location>		
+			<city>Georgetown</city>
+			<address>				
+				8-20, Level 8,
+				1st Avenue Mall,
+				182, Jalan Magazine,
+				Georgetown,
+				10300 Penang
+			</address>
+		</location>
+	</theatre>
+	
+	<theatre theatreID="TH-003">
+		<name>Bukit Raja</name>
+		<location>		
+			<city>Klang</city>
+			<address>				
+				F01, 1st Floor,
+				Bukit Raja,
+				Persiaran Bukit Raja 2,
+				Bandar Baru Klang,
+				41150 Klang,
+				Selangor
+			</address>
+		</location>
+	</theatre>
+	
+	<theatre theatreID="TH-004">
+		<name>Sunway Pyramid</name>
+		<location>		
+			<city>Sunway</city>
+			<address>
+				F1.01, Level 1,
+				Sunway Pyramid,
+				Bandar Sunway,
+				46150 Petaling Jaya,
+				Selangor
+			</address>
+		</location>
+	</theatre>
+	
+	<theatre theatreID="TH-005">
+		<name>Suria KLCC</name>
+		<location>		
+			<city>Kuala Lumpur</city>
+			<address>
+				C3.01, Level 3,
+				Suria KLCC,
+				Kuala Lumpur City Centre,
+				50088 Kuala Lumpur
+			</address>
+		</location>
+	</theatre>
+	
+	<theatre theatreID="TH-006">
+		<name>Berjaya Times Square</name>
+		<location>		
+			<city>Kuala Lumpur</city>
+			<address>
+				B701, Level 3, 
+				Berjaya Times Square, 1, Jalan Imbi, Imbi Putra, 
+				55100 Kuala Lumpur
+			</address>
+		</location>
+	</theatre>
+	
+	<theatre theatreID="TH-007">
+		<name>Midvalley Megamall</name>
+		<location>		
+			<city>Mid Valley City</city>
+			<address>
+				T-001, Mid Valley Megamal, Lingkaran Syed Putra, 
+				Mid Valley city, 
+				59200 Kuala Lumpur
+			</address>
+		</location>
+	</theatre>
+	
+	<theatre theatreID="TH-008">
+		<name>The Mines</name>
+		<location>		
+			<city>Seri Kembangan</city>
+			<address>
+				L3-76, Level 3,
+				The Mines,
+				Jalan Dulang,
+				Mines Resort city,
+				43300 Seri Kembangan,
+				Selangor
+			</address>
+		</location>
+	</theatre>
+	
+	<theatre theatreID="TH-009">
+		<name>Sunway Velocity</name>
+		<location>		
+			<city>Cheras</city>
+			<address>
+				Level 4,
+				Sunway Velocity Mall,
+				80, Jalan Cheras, Maluri
+				55100 Wilayah Persekutuan Kuala Lumpur 
+			</address>
+		</location>
+	</theatre>
+	
+	<theatre theatreID="TH-010">
+		<name>Vivacity Megamall</name>
+		<location>		
+			<city>Kuching</city>
+			<address>
+				Unit A01, Level 3, 
+				Vivacity Megamall,
+				Jalan Wan Alwi,
+				93350 Kuching, Sarawak
+			</address>
+		</location>
+	</theatre>
+</theatres>

@@ -1,0 +1,26 @@
+<!--
+   Filename:         Orders.dtd
+   Supporting Files: 
+-->
+
+<!ELEMENT customers (customer+)> 
+
+<!ELEMENT customer (name, address, phone, email, orders)>
+<!ATTLIST customer custID ID #REQUIRED>	
+<!ATTLIST customer gender (Male | Female | Other) #REQUIRED>
+<!ELEMENT name (#PCDATA)>	
+<!ELEMENT address (#PCDATA)>	
+<!ELEMENT phone (#PCDATA)>	
+<!ELEMENT email (#PCDATA)>	
+
+
+<!ELEMENT orders (order+)>	
+<!ELEMENT order (tickets)>
+<!ATTLIST order orderID ID #REQUIRED>	
+<!ATTLIST order orderDate CDATA #REQUIRED>	
+
+<!ELEMENT tickets (ticket+)>
+<!ELEMENT ticket (#PCDATA)>
+<!ATTLIST ticket ticketPrice CDATA #REQUIRED>	
+<!ATTLIST ticket hallType (IMAX | LUXE | BEANIE | INDULGE) #REQUIRED>
+<!ATTLIST ticket ticketQty CDATA #REQUIRED>		

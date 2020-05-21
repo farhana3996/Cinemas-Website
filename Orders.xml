@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+   Filename: 			Orders.xml
+   Supporting Files: 	Orders.xsd, Orders.dtd, Orders.xsl
+-->
+<?xml-stylesheet type="text/xsl" href="Orders.xsl" ?>
+<!DOCTYPE customers SYSTEM "Orders.dtd">
+
+<customers xmlns:xsl="http://www.w3.org/2001/XMLSchema-instance"
+		   xsl:noNamespaceSchemaLocation="Orders.xsd">
+		   
+	<customer custID="CU-001" gender="Female">
+		<name>Fatima Mustafa</name>
+		<address> <![CDATA[ Putra Samar, 47500 Kuala Lumpur ]]></address>
+		<phone>(611) 555-4033</phone>
+		<email>FatM34@gmail.com</email> 
+		<orders>
+			<order orderID="OR-141" orderDate="2018-05-02">
+				<tickets>
+					<ticket ticketPrice="14.52" hallType="IMAX" ticketQty="5">Badhaai Ho</ticket>
+				</tickets>
+			</order>
+		</orders>
+	</customer>
+	
+	<customer custID="CU-002" gender="Male">
+		<name>Nigel Peter</name>
+		<address> <![CDATA[ Taman Damai, 5700 Kuala Lumpur ]]></address>
+		<phone>(251) 555-7756</phone>
+		<email>NigelPP@gmail.com</email> 
+		<orders>
+			<order orderID="OR-111" orderDate="2018-01-22">
+				<tickets>
+					<ticket ticketPrice="20.00" hallType="LUXE" ticketQty="2">A Star Is Born</ticket>
+				</tickets>
+			</order>
+
+			<order orderID="OR-182" orderDate="2018-12-06">
+				<tickets>
+					<ticket ticketPrice="20.00" hallType="LUXE" ticketQty="1">Exes Baggage</ticket>
+				</tickets>
+			</order>
+		</orders>
+	</customer>
+	
+	<customer custID="CU-003" gender="Male">
+		<name>Sam Matin</name>
+		<address> <![CDATA[ Sinar Selatan, 47500 Kuala Lumpur ]]></address>
+		<phone>(410) 555-2920</phone>
+		<email>SamMatin18@gmail.com</email> 
+		
+		<orders>
+			<order orderID="OR-101" orderDate="2018-08-12">
+				<tickets>
+					<ticket ticketPrice="15.00" hallType="IMAX" ticketQty="1">Johnny English Strikes Again</ticket>
+				</tickets>
+			</order>
+			
+			<order orderID="OR-151" orderDate="2018-10-06">
+				<tickets>
+					<ticket ticketPrice="25.00" hallType="LUXE" ticketQty="2">The Negotiation</ticket>
+					<ticket ticketPrice="15.00" hallType="IMAX" ticketQty="1">Hunter Killer</ticket>
+				</tickets>
+			</order>
+			
+			<order orderID="OR-121" orderDate="2018-10-11">
+				<tickets>
+					<ticket ticketPrice="50.00" hallType="BEANIE" ticketQty="4">Paskal The Movie</ticket>
+				</tickets>
+			</order>
+		</orders>
+	</customer>
+	
+</customers>

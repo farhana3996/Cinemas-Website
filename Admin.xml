@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+   Filename: 			Admin.xml
+   Supporting Files: 	Admin.xsd, About.xsl, Admin.dtd
+-->
+<?xml-stylesheet type="text/xsl" href="Admin.xsl"?>
+<!DOCTYPE admins SYSTEM "Admin.dtd">
+
+<admins   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="Admin.xsd" xmlns:html="http://www.w3.org/1999/xhtml">
+	<admin adminID="AD-001" gender="Female" maritalStatus="Single">
+		<basicInfo>
+			<firstName>Ricky</firstName>
+			<lastName>Crosby</lastName>			
+			<dateOfBirth>1988-03-18</dateOfBirth>
+			<nationality>American</nationality>
+			<contact>
+				<email>rick88@gmail.com</email>
+				<phoneNo>010-203 4705</phoneNo>
+				<homeAddress>
+					Block C-07-01, LaCosta Condominium, Jalan Tasik Selatan, Sunway South Quay, Bandar Sunway, 47500 Subang Jaya
+				</homeAddress>
+			</contact>
+		</basicInfo>
+		<jobInfo>
+			<title>Back-End Developer</title>
+			<department>Information Technology</department>
+			<branch>Sunway</branch>
+			<hireDate>2016-07-01</hireDate>
+		</jobInfo>
+	</admin>
+</admins>

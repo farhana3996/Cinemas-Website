@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!--
+   Filename:         Admin.xsd
+   Supporting Files: 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:element name="admins">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="admin" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>            
+        </xs:complexType>    
+    </xs:element>
+	
+	<xs:element name="admin">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="basicInfo"/>
+				<xs:element ref="jobInfo"/>
+			</xs:sequence>
+			<xs:attribute name="adminID" type="idType" use="required"/> 
+			<xs:attribute name="gender" type="genderType" use="required"/> 
+			<xs:attribute name="maritalStatus" type="statusType" use="required"/> 
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="basicInfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="firstName" type="xs:string"/>
+				<xs:element name="lastName" type="xs:string"/>
+				<xs:element name="dateOfBirth" type="xs:date"/>
+				<xs:element name="nationality" type="xs:string"/>
+				<xs:element ref="contact"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="contact">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="email" type="xs:string"/>
+				<xs:element name="phoneNo" type="xs:string"/>
+				<xs:element name="homeAddress" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="jobInfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="title" type="xs:string"/>
+				<xs:element name="department" type="xs:string"/>
+				<xs:element name="branch" type="xs:string"/>
+				<xs:element name="hireDate" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:simpleType name="idType"> 
+		<xs:restriction base="xs:ID"> 
+			<xs:pattern value="AD-\d{3}"/> 
+		</xs:restriction> 
+	</xs:simpleType> 
+	
+	<xs:simpleType name="genderType"> 
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Male"/>
+			<xs:enumeration value="Female"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction> 
+	</xs:simpleType>
+	
+	<xs:simpleType name="statusType"> 
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Married"/>
+			<xs:enumeration value="Widowed"/>
+			<xs:enumeration value="Separated"/>
+			<xs:enumeration value="Divorced"/>
+			<xs:enumeration value="Single"/>
+		</xs:restriction> 
+	</xs:simpleType>
+</xs:schema>

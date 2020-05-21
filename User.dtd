@@ -1,0 +1,34 @@
+<!--
+   Filename:         User.dtd
+   Supporting Files: 
+-->
+
+<!ELEMENT users (user, promotions)> 
+
+<!ELEMENT user (loginInfo, profileInfo)>
+<!ATTLIST user userID ID #REQUIRED>	
+<!ATTLIST user passportNumber CDATA #IMPLIED>	
+
+<!ELEMENT loginInfo (username, email, phoneNo)>
+<!ELEMENT username (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT phoneNo (#PCDATA)>
+
+<!ELEMENT profileInfo (fullname, dateOfBirth, nationality, maritalStatus, address)>
+<!ELEMENT fullname (#PCDATA)>
+<!ATTLIST fullname gender (Male | Female | Other) #REQUIRED>	
+<!ELEMENT dateOfBirth (#PCDATA)>
+<!ELEMENT nationality (#PCDATA)>
+<!ELEMENT maritalStatus (#PCDATA)>
+
+<!ELEMENT address (location, postalCode)>
+<!ELEMENT location (#PCDATA)>
+<!ELEMENT postalCode (#PCDATA)>
+
+<!ELEMENT promotions (promo+)>
+<!ELEMENT promo (title, validDate)>
+<!ATTLIST promo id ID #REQUIRED>	
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT validDate (from, to)>
+<!ELEMENT from (#PCDATA)>
+<!ELEMENT to (#PCDATA)>

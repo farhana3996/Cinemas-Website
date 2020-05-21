@@ -1,0 +1,241 @@
+<?xml version="1.0" ?> 
+<!--
+   Filename: 			MovieList.xml
+   Supporting Files: 	MovieList.xsd, MovieList.dtd
+-->
+<!DOCTYPE movies SYSTEM "MovieList.dtd">
+
+<movies xmlns:xsl="http://www.w3.org/2001/XMLSchema-instance"
+		xsl:noNamespaceSchemaLocation="MovieList.xsd">
+				 
+	<movie movieID="M-01" genre="Drama" language="English" rating="18">
+		<title>A Star Is Born</title>
+		<director>Bradley Cooper</director>
+		<duration>2 Hours 15 Minutes</duration>
+		<sessions>
+			<session>22/10/2018 (10:00 PM)</session>
+			<session>23/10/2018 (4:45 PM)</session>
+			<session>24/10/2018 (9:10 PM)</session>
+		</sessions>
+		<casts>
+			<cast>Bradley Cooper</cast>
+			<cast>Lady Gaga</cast>
+			<cast>Sam Elliot</cast>
+		</casts>
+		<synopsis>
+			<![CDATA[Jackson Maine (Bradley Cooper) is a fading country music star who discovers a talented unknown, 
+			Ally (Lady Gaga), and helps catapult her to stardom. The two also begin a passionate love affair. 
+			But with Ally's career now bigger and brighter than his, 
+			Jack finds it harder to handle losing the glory he once had.
+			]]>
+		</synopsis>	
+	</movie>
+	
+	<movie movieID="M-02" genre="Action/Comedy" language="English" rating="P13">
+		<title>Johnny English Strikes Again</title>
+		<director>David Kerr</director>
+		<duration>1 Hour 29 Minutes</duration>
+		<sessions>
+			<session>22/10/2018 (1:30 PM)</session>
+			<session>23/10/2018 (6:45 PM)</session>
+			<session>24/10/2018 (11:10 AM)</session>
+			<session>25/10/2018 (9:10 PM)</session>
+		</sessions>
+		<casts>
+			<cast>Rowan Atkinson</cast>
+			<cast>Olga Kurylenko</cast>
+			<cast>Ben Miller</cast>
+		</casts>
+		<synopsis>
+			<![CDATA[Rowan Atkinson reprises his role as MI7 secret agent Johnny English 
+			in this third instalment of the "Johnny English" movie series.
+			]]>
+		</synopsis>	
+	</movie>
+	
+	<movie movieID="M-03" genre="Crime/Thriller" language="Korean" rating="18">
+		<title>The Negotiation</title>
+		<director>Lee Jong-Seok</director>
+		<duration>1 Hour 55 Minutes</duration>
+		<sessions>
+			<session>22/10/2018 (2:15 PM)</session>
+			<session>23/10/2018 (6:45 PM)</session>
+			<session>24/10/2018 (11:10 PM)</session>
+		</sessions>
+		<casts>
+			<cast>Hyun Bin</cast>
+			<cast>Son Ye-jin</cast>
+			<cast>Kim Sang-Ho</cast>
+		</casts>
+		<synopsis>
+			<![CDATA[Ha Chae-Yoon works as a crisis negotiator for Seoul Metropolitan Police Agency. 
+			When her superior gets kidnapped by a criminal, Min Tae-Koo, 
+			she will have to face up to him and negotiate her boss' release.
+			]]>
+		</synopsis>	
+	</movie>
+	
+	<movie movieID="M-04" genre="Comedy" language="Hindi" rating="P13">
+		<title>Badhaai Ho</title>
+		<director>Amit Sharma</director>
+		<duration>2 Hours 4 Minutes</duration>
+		<sessions>
+			<session>22/10/2018 (8:00 PM)</session>
+			<session>23/10/2018 (11:45 AM)</session>
+			<session>24/10/2018 (7:10 PM)</session>
+			<session>25/10/2018 (1:10 PM)</session>
+		</sessions>
+		<casts>
+			<cast>Ayushmann Khurrana</cast>
+			<cast>Sanya Malhotra</cast>
+			<cast>Gajraj Rao</cast>
+		</casts>
+		<synopsis>
+			<![CDATA[A man called Nakul is the older of the two grown up children of the Kaushik family. 
+			He lives in New Delhi with his grandmother, parents and sibling. 
+			When he finds out that his mother is pregnant, he has to deal with the social embarrassment that comes with the news. 
+			He also goes through ups and downs in his relationship with his upper class girlfriend, Renee.
+			]]>
+		</synopsis>	
+	</movie>
+	
+	<movie movieID="M-05" genre="Animation" language="English" rating="U">
+		<title>The Stolen Princess</title>
+		<director>Oleg Malamuzh</director>
+		<duration>1 Hour 31 Minutes</duration>
+		<sessions>
+			<session>22/10/2018 (9:50 AM)</session>
+			<session>24/10/2018 (2:45 PM)</session>
+			<session>26/10/2018 (5:10 PM)</session>
+		</sessions>
+		<casts>
+			<cast>Oleksiy Zavgorodniy</cast>
+			<cast>Nadya Dorofeeva</cast>
+			<cast>Yevgen Malukha</cast>
+		</casts>
+		<synopsis>
+			<![CDATA[Ruslan, a wandering artist who dreams of becoming a knight, 
+			falls in love with a beautiful woman called Mila, not knowing that she is a princess. But one day, 
+			evil sorcerer Chоrnomor appears in a magic vortex and kidnaps Mila right before Ruslan's eyes. 
+			This prompts the young man to set out on a mission to rescue his lover, proving that real love is stronger than magic.
+			]]>
+		</synopsis>	
+	</movie>
+	
+	<movie movieID="M-06" genre="Action" language="Cantonese" rating="18">	
+		<title>Golden Job</title>
+		<director>Chin Ka-Lok</director>
+		<duration>1 Hour 40 Minutes</duration>
+		<sessions>
+			<session>22/10/2018 (12:20 AM)</session>
+			<session>24/10/2018 (1:45 PM)</session>
+			<session>26/10/2018 (3:10 PM)</session>
+		</sessions>
+		<casts>
+			<cast>Chin Ka-Lok</cast>
+			<cast>Jordan Chan</cast>
+			<cast>Ekin Cheng</cast>
+			<cast>Michael Tse</cast>
+		</casts>
+		<synopsis>
+			<![CDATA[Five con artists are planning to retire soon. However, while they are throwing 
+			an innocent bachelor party, they unwittingly get caught up in a heist planned 
+			by an international drug lord.
+			]]>
+		</synopsis>	
+	</movie>
+	
+	<movie movieID="M-07" genre="Drama/Romance" language="Tagalog" rating="18">		
+		<title>Exes Baggage</title>
+		<director>Dan Villegas</director>
+		<duration>1 Hour 44 Minutes</duration>
+		<sessions>
+			<session>22/10/2018 (10:50 PM)</session>
+			<session>24/10/2018 (8:30 PM)</session>
+			<session>27/10/2018 (7:20 PM)</session>
+		</sessions>
+		<casts>
+			<cast>Angelica Panganiban</cast>
+			<cast>Carlo Aquino</cast>
+			<cast>Dionne Monsanto</cast>
+		</casts>
+		<synopsis>
+			<![CDATA[Nix prefers to be alone with his music while Pia is a rebel who fights for what she believes in. 
+			When the two randomly meet at a bar, they form a bond over their past failed relationships. 
+			They begin dating but later break up because of the emotional baggage they still carry. 
+			Two years later, they meet again at a friend's party.
+			]]>
+		</synopsis>	
+	</movie>
+	
+	<movie movieID="M-08" genre="Horror" language="Indonesian" rating="18">	
+		<title>Sebelum Iblis Menjemput</title>
+		<director>Ideate Media</director>
+		<duration>1 Hour 50 Minutes</duration>
+		<sessions>
+			<session>25/10/2018 (11:20 PM)</session>
+			<session>26/10/2018 (7:30 PM)</session>
+			<session>27/10/2018 (1:30 AM)</session>
+		</sessions>
+		<casts>
+			<cast>Chelsea Islan</cast>
+			<cast>Pevita Pearce</cast>
+			<cast>Karina Suwandi</cast>
+			<cast>Samo Rafael</cast>
+		</casts>
+		<synopsis>
+			<![CDATA[Alfie grew up independently after her father Lesmana abandoned her and her mother Intan, 
+			who later mysteriously passed away. Now Lesmana has remarried and has another two children with his new wife. 
+			Even though Alfie is estranged from Lesmana and his new family, 
+			she still feels compelled to find out the reason why when he suddenly falls mysteriously ill and his great wealth is diminishing. 
+			She then visits a villa she used to go to with her parents. 
+			]]>
+		</synopsis>	
+	</movie>
+	
+	<movie movieID="M-09" genre="Action/Thriller" language="Malay" rating="P13">	
+		<title>Paskal The Movie</title>
+		<director>Adrian Teh</director>
+		<duration>1 Hour 40 Minutes</duration>
+		<sessions>
+			<session>25/10/2018 (1:20 PM)</session>
+			<session>26/10/2018 (9:30 PM)</session>
+			<session>27/10/2018 (10:30 AM)</session>
+		</sessions>
+		<casts>
+			<cast>Hairul Azreen</cast>
+			<cast>Ammar Alfian</cast>
+			<cast>Henley Hii</cast>
+			<cast>Taufik Hanafi</cast>
+		</casts>
+		<synopsis>
+			<![CDATA[PASKAL, or Pasukan Khas Laut, is an elite unit in the Royal Malaysian Navy. 
+			The movie follows the true events of PASKAL's Lieutenant Commander Arman Anwar and his team's mission to rescue a tanker, 
+			MV Bunga Laurel, that was hijacked by Somalian Pirates in 2011.
+			]]>
+		</synopsis>	
+	</movie>
+	
+	<movie movieID="M-10" genre="Action/Adventure" language="English" rating="P13">	
+		<title>Hunter Killer</title>
+		<director>Donovan Marsh</director>
+		<duration>2 Hours 2 Minutes</duration>
+		<sessions>
+			<session>28/10/2018 (2:30 PM)</session>
+			<session>29/10/2018 (11:50 AM)</session>
+			<session>1/11/2018 (6:45 PM)</session>
+		</sessions>
+		<casts>
+			<cast>Gerard Butler</cast>
+			<cast>Gary Oldman</cast>
+			<cast>Common</cast>
+			<cast>Linda Cardellini</cast>
+		</casts>
+		<synopsis>
+			<![CDATA[When the Russian president gets kidnapped by a rogue general, 
+			it is up to the US Navy Seals to save him. 
+			To do so, they will need to work together with an untested American submarine captain.
+			]]>
+		</synopsis>	
+	</movie>
+</movies>

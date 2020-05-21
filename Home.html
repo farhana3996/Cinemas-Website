@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+   Filename: 			Home.html
+   Supporting Files: 	style.css, MovieList.xml
+-->
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"/>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+		<title>Home</title>
+	</head>
+	<body style="text-align:center">
+		<div class="header">
+			<img src="images/empire_logo.png" width="100px" style="float:left"/>
+			<div class="header-right">						
+				<a href="Home.html" class="act">Home</a>					
+				<a href="Theatres.xml">Cinemas</a>	
+				<a href="TicketPrices.xml">Ticket Prices</a>										
+				<div class="dropdown">
+					<button class="dropbtn">More 
+						<i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content">
+						<a href="About.xml">About</a>
+						<a href="User.xml">Profile</a>	
+						<a href="Login.html">Logout</a>	
+					</div>
+				</div>									
+				<a href="BuyTickets.html" class="button-call">Buy Tickets</a>				
+			</div>
+		</div>
+
+		<div class="slideshow-container" >
+			<div class="mySlides fade">
+				<img src="images/c0.png" style="width:100%">
+			</div>
+			
+			<div class="mySlides fade">
+				<img src="images/c1.jpg" style="width:100%">
+			</div>
+
+			<div class="mySlides fade">
+				<img src="images/c2.jpg" style="width:100%">
+			</div>
+
+			<div class="mySlides fade">
+				<img src="images/c3.jpg" style="width:100%">
+			</div>
+			<div class="mySlides fade">
+				<img src="images/c5.jpg" style="width:100%">
+			</div>
+		</div>
+		<br>
+
+		<div style="text-align:center">
+			<span class="dot"></span>
+			<span class="dot"></span> 
+			<span class="dot"></span> 
+			<span class="dot"></span> 
+			<span class="dot"></span>
+		</div>
+		<script>
+			var slideIndex = 0;
+			showSlides();
+
+			function showSlides() {
+				var i;
+				var slides = document.getElementsByClassName("mySlides");
+				var dots = document.getElementsByClassName("dot");
+				for (i = 0; i < slides.length; i++) {
+					slides[i].style.display = "none";  
+				}
+				slideIndex++;
+				if (slideIndex > slides.length) {slideIndex = 1}    
+				for (i = 0; i < dots.length; i++) {
+					dots[i].className = dots[i].className.replace(" active", "");
+				}
+				slides[slideIndex-1].style.display = "block";  
+				dots[slideIndex-1].className += " active";
+				setTimeout(showSlides, 3000);
+			}
+		</script>
+		<h1>Now Showing<span style="font-size: 20px;">*</span></h1>
+		<i style="font-size: 12px;">*Click on a Movie to display movie information.</i>
+		<div id="showMovie"></div>
+		<div class="scrollbar">
+			<table align="center" id="movietable"></table>
+		</div>
+
+		<script>
+			var x,xmlhttp,xmlDoc
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET", "MovieList.xml", false);
+			xmlhttp.send();
+			xmlDoc = xmlhttp.responseXML; 
+			x = xmlDoc.getElementsByTagName("movie");
+			table="<tr></tr><tr>";
+			for (i = 0; i <5; i++) { 
+				table += "<td onclick='displayMovie(" + i + ")'><img class='movieimg' src='images/movie0"+(i+1)+".jpg' width='200'";
+				table += x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+				table += "</td>";
+			}
+			table += "</tr><tr>";
+			for (i = 5; i <10; i++) { 
+				table += "<td onclick='displayMovie(" + i + ")'><img class='movieimg' src='images/movie0"+(i+1)+".jpg' width='200'";
+				table += x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+				table += "</td>";
+			}
+			table += "</tr>";
+			document.getElementById("movietable").innerHTML = table;
+
+			function displayMovie(i) {
+				document.getElementById("showMovie").innerHTML =
+				"<div class='movieInfo'><table cellspacing='20'><tr><th>TITLE</th><td>" +
+				x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue +
+				"</td></tr><tr><th>GENRE</th><td>" +
+				x[i].getAttribute("genre")+
+				"</td></tr><tr><th>LANGUAGE</th><td>" +
+				x[i].getAttribute("language")+
+				"</td></tr><tr><th>RATING</th><td>" +
+				x[i].getAttribute("rating")+
+				"</td></tr><tr><th>DURATION</th><td>" +
+				x[i].getElementsByTagName("duration")[0].childNodes[0].nodeValue +
+				"</td></tr><tr><th>DIRECTOR</th><td>" +
+				x[i].getElementsByTagName("director")[0].childNodes[0].nodeValue +
+				"</td></tr><tr><th>CAST</th><td>" + 
+				x[i].getElementsByTagName("cast")[0].childNodes[0].nodeValue + ", "
+				+ x[i].getElementsByTagName("cast")[1].childNodes[0].nodeValue + ", "
+				+ x[i].getElementsByTagName("cast")[2].childNodes[0].nodeValue + 
+				 "</td></tr></table></div>";
+			}
+		</script>
+		<br/>
+		<div class="footer">
+		  <p>&copy; 2018 Empire Cinemas. All rights reserved.</p>
+		</div>
+	</body>
+</html>

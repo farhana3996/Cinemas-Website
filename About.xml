@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+   Filename: 			About.xml
+   Supporting Files: 	About.dtd, About.xsl, About.xsd
+-->
+<?xml-stylesheet type="text/xsl" href="About.xsl"?>
+
+<!DOCTYPE information SYSTEM "About.dtd">
+<information xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="About.xsd" xmlns:html="http://www.w3.org/1999/xhtml">
+	<about>
+		<![CDATA[AMC Cinemas is a wholly owned subsidiary of Tanjong Public Limited Company. Since inception in 1995, AMC Cinemas has  grown to become one of Malaysia’s premier film exhibition companies and established its name as a pioneer of cinema industry and owner of premier multiplexes in Malaysia. We strive to improve every day to ensure our customers have the best time and leave with fond memories only to return for more exciting cinematic experience. We have a dedicated team behind these screens who are committed to make you smile! AMC Cinemas is 100% digital. Cinema-goers can enjoy unmatched brightness, sharpness and superior images in high definition contents such as films, documentaries and other alternative content in superior quality.]]>
+	</about>
+	<location>
+		<![CDATA[We are located in 34 multiplexes with 268 screens and more than 45,000 seats all over Malaysia including major shopping centres in Kuala Lumpur, Selangor, Negeri Sembilan, Perak, Penang, Johor, Terengganu and Sarawak. ]]>
+	</location>
+	<halls>
+		<hall type="IMAX">
+			<description>
+				<![CDATA[
+				If you admire crystal clear images coupled with massive screens and impeccable digital sound system, we promise this will create a unique environment for you.
+				]]>
+			</description>
+		</hall>
+		<hall type="INDULGE">
+			<description>
+				<![CDATA[
+				If you prefer a personalized and exclusive experience for a special occasion, we suggest this comfortable luxury hall equipped with a snuggly blanket and reclining seat.
+				]]>
+			</description>
+		</hall>
+		<hall type="BEANIE">
+			<description>
+				<![CDATA[
+				Malaysia’s first innovative concept cinema, which features colourful bed size beanbags (as opposed to seats or bed). Try this if you would kick off your shoes and relax with a cosy ambiance.
+				]]>
+			</description>
+		</hall>
+		<hall type="LUXE">
+			<description>
+				<![CDATA[
+				If you appreciate spacious and comfortable seats with wider leg room and added plush twin seats equipped with privacy wings for those who value their space.
+				]]>
+			</description>
+		</hall>
+	</halls>
+</information>

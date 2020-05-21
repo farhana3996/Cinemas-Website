@@ -1,0 +1,11 @@
+<!--
+   Filename:         About.dtd
+   Supporting Files: 
+-->
+<!ELEMENT information (about, location, halls)> 
+<!ELEMENT about (#PCDATA)>
+<!ELEMENT location (#PCDATA)>	
+<!ELEMENT halls (hall+)>	
+<!ELEMENT hall (description)>
+<!ELEMENT description (#PCDATA)>
+<!ATTLIST hall type (IMAX | INDULGE | BEANIE | LUXE) #REQUIRED>

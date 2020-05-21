@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!--
+   Filename:         User.xsd
+   Supporting Files: 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:element name="users">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="user" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element ref="promotions" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>            
+        </xs:complexType>    
+    </xs:element>
+	
+	<xs:element name="user">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="loginInfo"/>
+				<xs:element ref="profileInfo"/>
+			</xs:sequence>
+				<xs:attribute name="userID" type="idType" use="required"/> 
+				<xs:attribute name="passportNumber" type="xs:string" use="optional"/> 
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="loginInfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="username" type="xs:string"/>
+				<xs:element name="email" type="xs:string"/>
+				<xs:element name="phoneNo" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+		
+	<xs:element name="profileInfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fullname"/>
+				<xs:element name="dateOfBirth" type="xs:date"/>
+				<xs:element name="nationality" type="xs:string"/>
+				<xs:element name="maritalStatus" type="maritalType"/>
+				<xs:element ref="address"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="fullname"> 
+		<xs:complexType> 
+			<xs:simpleContent> 
+				<xs:extension base="xs:string"> 
+					<xs:attribute name="gender" use="required" type="genderType"/> 
+				</xs:extension> 
+			</xs:simpleContent> 
+		</xs:complexType> 
+	</xs:element>	
+	
+	<xs:simpleType name="genderType"> 
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Male"/>
+			<xs:enumeration value="Female"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction> 
+	</xs:simpleType>
+	
+	<xs:simpleType name="idType"> 
+		<xs:restriction base="xs:ID"> 
+			<xs:pattern value="US-\d{3}"/> 
+		</xs:restriction> 
+	</xs:simpleType> 
+	
+		
+	<xs:simpleType name="maritalType"> 
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Married"/>
+			<xs:enumeration value="Widowed"/>
+			<xs:enumeration value="Separated"/>
+			<xs:enumeration value="Divorced"/>
+			<xs:enumeration value="Single"/>
+		</xs:restriction> 
+	</xs:simpleType>
+	
+	<xs:element name="address"> 
+		<xs:complexType> 
+			<xs:sequence> 
+				<xs:element name="location" type="xs:string"/>
+				<xs:element name="postalCode" type="xs:positiveInteger"/>
+			</xs:sequence> 
+		</xs:complexType> 
+	</xs:element>	
+	
+	<xs:element name="promotions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="promo" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="promo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="title" type="xs:string"/>
+				<xs:element ref="validDate"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="promoidType" use="required"/> 
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="validDate"> 
+		<xs:complexType>
+			<xs:sequence>
+					<xs:element name="from" type="xs:date"/>
+					<xs:element name="to" type="xs:date"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+	
+	<xs:simpleType name="promoidType"> 
+		<xs:restriction base="xs:ID"> 
+			<xs:pattern value="PR-\d{3}"/> 
+		</xs:restriction> 
+	</xs:simpleType> 
+
+</xs:schema>

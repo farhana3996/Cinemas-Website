@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--
+   Filename: 			Login.html
+   Supporting Files: 	style.css, Admin.xml, User.xml
+-->
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<title>Login</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+		<script>
+		$(function() {
+		  $(":radio[name=toggler]").change(function() {
+			if ($(this).is(':checked')) {
+				$('.container').hide();
+				$("#blk-"+$(this).val()).show();
+			}
+
+		  });
+		});
+		
+		$(document).ready(function(){
+			var xml;
+			$('#b1').click(function(){
+				$.get('Admin.xml', null, function (data, textStatus) {
+					xml=data;
+					$(xml).find('admin').each( function(){
+						var username = $(this).find('firstName').text()
+						var pass = $(this).attr('adminID')
+						
+						if(!(username==$('#adminid').val())) {
+							alert('Incorrect Username! Try Again.');
+						}
+						else if(!(pass==$('#adminpwd').val())) {
+							alert('Incorrect Password! Try Again.');
+						}
+						else if(username==$('#adminid').val() && pass==$('#adminpwd').val())
+						{
+							location="Admin.xml"
+						}
+						else {
+							alert('Something Went Wrong! Try Again.');
+						}
+					});
+				});
+			});
+		});
+		
+		$(document).ready(function(){
+			var xml;
+			$('#b2').click(function(){
+				$.get('User.xml', null, function (data, textStatus) {
+					xml=data;
+					$(xml).find('user').each( function(){
+						var username = $(this).find('username').text()
+						var pass = $(this).attr('userID')
+
+						if(!(username==$('#userid').val())) {
+							alert('Incorrect Username! Try Again.');
+						}
+						else if (!(pass==$('#userpwd').val())) {
+							alert('Incorrect Password! Try Again.');
+						}
+						else if(username==$('#userid').val() && pass==$('#userpwd').val()) {
+							location="Home.html"
+						}
+						else {
+							alert('Something Went Wrong! Try Again.');
+						}
+					});
+				});
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<div style="text-align:center; margin: 0 auto;">
+			<div class="loginCard" style="display: inline-block;">
+				<img src="images/empire_logo.png" alt="logo"/>
+				<label class="remember-me" >
+					<input type="radio" checked="checked" id="rdb1" name="toggler" value="1">Admin &nbsp;
+					<input type="radio" id="rdb2" name="toggler" value="2">User
+				</label>
+				<div class="container" id="blk-1">
+					<h2>Admin Login</h2>
+					<form>
+						<div class="input-container" style="padding-top: 10px;">
+							<i class="fa fa-user loginIcon"></i>
+							<input class="input-field" type="text" id="adminid" name="adminid" placeholder="Enter username"/><br/><br/>
+						</div>
+						
+						<div class="input-container">
+							<i class="fa fa-key loginIcon"></i>
+							<input  class="input-field" type="password" id="adminpwd" name="adminpwd" placeholder="Enter password"/>
+						</div>
+						<label class="remember-me">
+							<input type="checkbox" checked="checked" name="remember"> Remember me
+						</label>
+						<br/><br/>
+						<button class="button" type="button" id="b1"><span>Login</span></button>
+						<button class="button-outline" type="reset" id="b1">Reset</button>
+					</form>
+				</div>
+				
+				<div class="container" id="blk-2" style="display:none">
+					<h2>User Login</h2>
+					<form>
+						<div class="input-container" style="padding-top: 10px;">
+							<i class="fa fa-user loginIcon"></i>
+							<input class="input-field" type="text" id="userid" name="userid" placeholder="Enter username"/><br/><br/>
+						</div>
+						
+						<div class="input-container">
+							<i class="fa fa-key loginIcon"></i>
+							<input  class="input-field" type="password" id="userpwd" name="userpwd" placeholder="Enter password"/>
+						</div>
+						<label class="remember-me">
+							<input type="checkbox" checked="checked" name="remember"> Remember me
+						</label>
+						<br/><br/>
+						<button class="button" type="button" id="b2"><span>Login</span></button>
+						<button class="button-outline" type="reset" id="b2">Reset</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer">
+			<p>&copy; 2018 AMC Cinemas. All rights reserved.</p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+<!--
+   Filename:         TicketPrices.dtd
+   Supporting Files: 
+-->
+
+<!ELEMENT prices (ticketPrice+, note)> 
+
+<!ELEMENT ticketPrice (hall+)>
+<!ATTLIST ticketPrice format (STANDARD | 2D | 3D) #REQUIRED>	
+
+<!ELEMENT hall (weekday, weekend)>
+<!ELEMENT weekday (#PCDATA)>
+<!ELEMENT weekend (#PCDATA)>
+<!ATTLIST hall type (IMAX | INDULGE | BEANIE | LUXE) #REQUIRED>
+
+<!ELEMENT note (heading, description)>
+<!ELEMENT heading (#PCDATA)>
+<!ELEMENT description (#PCDATA)>

@@ -1,0 +1,28 @@
+<!--
+   Filename:         Admin.dtd
+   Supporting Files: 
+-->
+
+<!ELEMENT admins (admin)> 
+
+<!ELEMENT admin (basicInfo, jobInfo)>
+<!ATTLIST admin adminID ID #REQUIRED>	
+<!ATTLIST admin gender CDATA #REQUIRED>	
+<!ATTLIST admin maritalStatus CDATA #REQUIRED>	
+
+<!ELEMENT basicInfo (firstName, lastName, dateOfBirth, nationality, contact)>
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT lastName (#PCDATA)>
+<!ELEMENT dateOfBirth (#PCDATA)>
+<!ELEMENT nationality (#PCDATA)>
+<!ELEMENT contact (email, phoneNo, homeAddress)>
+
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT phoneNo (#PCDATA)>
+<!ELEMENT homeAddress (#PCDATA)>
+
+<!ELEMENT jobInfo (title, department, branch, hireDate)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT department (#PCDATA)>
+<!ELEMENT branch (#PCDATA)>
+<!ELEMENT hireDate (#PCDATA)>

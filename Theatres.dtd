@@ -1,0 +1,15 @@
+<!--
+   Filename:         Theatres.dtd
+   Supporting Files: 
+-->
+
+<!ELEMENT theatres (theatre+)> 
+
+<!ELEMENT theatre (name, location)>
+<!ATTLIST theatre theatreID CDATA #REQUIRED>	
+
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT location (city, address)>
+
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT address (#PCDATA)>

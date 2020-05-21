@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<!--
+   Filename: 			BuyTickets.html
+   Supporting Files: 	style.css, MovieList.xml, Theatres.xml, TicketPrices.xml
+-->
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"/>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$.ajax({
+					type: "GET",
+					url: "movielist.xml",
+					dataType: "xml",
+					success: function(xml) {
+					var select = $('#MovieSelection');
+
+					$(xml).find('movies').each(function(){
+						$(this).find('title').each(function(){
+							var value = $(this).text();
+							select.append("<option class='ddindent' value='"+ value +"'>"+value+"</option>");
+							});
+						});
+					select.children(":first").text("Select a movie").attr("selected",true);
+					}
+				}); 
+			}); 
+			$(document).ready(function(){
+				$.ajax({
+					type: "GET",
+					url: "Theatres.xml",
+					dataType: "xml",
+					success: function(xml) {
+					var select = $('#CinemaSelection');
+
+					$(xml).find('theatres').each(function(){
+						$(this).find('name').each(function(){
+							var value = $(this).text();
+							select.append("<option class='ddindent' value='"+ value +"'>"+value+"</option>");
+							});
+						});
+					select.children(":first").text("Select a cinema").attr("selected",true);
+					}
+				}); 
+			}); 
+			$(document).ready(function(){
+				$.ajax({
+					type: "GET",
+					url: "movielist.xml",
+					dataType: "xml",
+					success: function(xml) {
+					var select = $('#SessionSelection');
+
+					$(xml).find('movies').each(function(){
+						$(this).find('session').each(function(){
+							var value = $(this).text();
+							select.append("<option class='ddindent' value='"+ value +"'>"+value+"</option>");
+							});
+						});
+					select.children(":first").text("Select a session").attr("selected",true);
+					}
+				}); 
+			}); 
+			
+			$(document).ready(function(){
+				$.ajax({
+					type: "GET",
+					url: "ticketprices.xml",
+					dataType: "xml",
+					success: function(xml) {
+						var p = $(xml).find('ticketPrice[format="STANDARD"]').find('hall[type="IMAX"]').find('weekday').text();		
+						$('#price').text(p);
+					}
+				}); 
+			}); 
+		
+			function printSeat(){
+				document.getElementById("seat-container").style.display = "inline-block";
+			}	
+			function printChecked(){
+				var items=document.getElementsByName('seat[]');
+				var selectedItems="";
+				for(var i=0; i<items.length; i++){
+					if(items[i].type=='checkbox' && items[i].checked==true)
+						selectedItems+="| " + items[i].value+" | ";
+				}
+				document.getElementById("Seat").innerHTML = selectedItems;
+				
+				var m = document.getElementById("MovieSelection").value;
+				document.getElementById("Movie").innerHTML = m;
+				
+				if(m=="A Star Is Born"){
+					document.getElementById("MovieImage").innerHTML = "<img src='images/movie01.jpg' style='border-radius: 3px 0px 0px 3px; height: 100%''>";
+				}
+				if(m=="Johnny English Strikes Again"){
+					document.getElementById("MovieImage").innerHTML = "<img src='images/movie02.jpg' style='border-radius: 3px 0px 0px 3px; height: 100%''>";
+				}
+				if(m=="The Negotiation"){
+					document.getElementById("MovieImage").innerHTML = "<img src='images/movie03.jpg' style='border-radius: 3px 0px 0px 3px; height: 100%''>";
+				}
+				if(m=="Badhaai Ho"){
+					document.getElementById("MovieImage").innerHTML = "<img src='images/movie04.jpg' style='border-radius: 3px 0px 0px 3px; height: 100%''>";
+				}
+				if(m=="The Stolen Princess"){
+					document.getElementById("MovieImage").innerHTML = "<img src='images/movie05.jpg' style='border-radius: 3px 0px 0px 3px; height: 100%''>";
+				}
+				if(m=="Golden Job"){
+					document.getElementById("MovieImage").innerHTML = "<img src='images/movie06.jpg' style='border-radius: 3px 0px 0px 3px; height: 100%''>";
+				}
+				if(m=="Exes Baggage"){
+					document.getElementById("MovieImage").innerHTML = "<img src='images/movie07.jpg' style='border-radius: 3px 0px 0px 3px; height: 100%''>";
+				}
+				if(m=="Sebelum Iblis Menjemput"){
+					document.getElementById("MovieImage").innerHTML = "<img src='images/movie08.jpg' style='border-radius: 3px 0px 0px 3px; height: 100%''>";
+				}
+				if(m=="Paskal The Movie"){
+					document.getElementById("MovieImage").innerHTML = "<img src='images/movie09.jpg' style='border-radius: 3px 0px 0px 3px; height: 100%''>";
+				}
+				if(m=="Hunter Killer"){
+					document.getElementById("MovieImage").innerHTML = "<img src='images/movie010.jpg' style='border-radius: 3px 0px 0px 3px; height: 100%''>";
+				}
+				var l = document.getElementById("CinemaSelection").value;
+				document.getElementById("Location").innerHTML = l;
+				
+				var t = document.getElementById("SessionSelection").value;
+				document.getElementById("Time").innerHTML = t;
+				
+				var $checkboxes = $('input[type="checkbox"]');
+				var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
+
+				var p = document.getElementById("price").innerHTML;
+				
+				var price = countCheckedCheckboxes*p;
+				document.getElementById("seatCount").innerHTML = "RM " + price;
+							
+				document.getElementById("ticket").style.display = "inline-block";			
+			}			
+		</script>
+		
+	</head>
+	<body>
+		<div class="header">
+			<img src="images/empire_logo.png" width="100px" style="float:left"/>
+			<div class="header-right">						
+				<a href="Home.html">Home</a>					
+				<a href="Theatres.xml">Cinemas</a>	
+				<a href="TicketPrices.xml">Ticket Prices</a>										
+				<div class="dropdown">
+					<button class="dropbtn">More 
+						<i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content">
+						<a href="About.xml">About</a>
+						<a href="User.xml">Profile</a>	
+						<a href="Login.html">Logout</a>	
+					</div>
+				</div>									
+				<a href="BuyTickets.html" class="button-call">Buy Tickets</a>				
+			</div>
+		</div>
+
+		<div style="text-align:center">
+			<br/>
+			<h1 style="line-height: 5px">Book Tickets<span style="font-size: 20px;">*</span></h1>
+			<i style="font-size: 12px;">*Please pay for the ticket at AMC Theatres</i><br/><br/>
+			<div class="selectCard" style="align:center; display: inline-block;">
+				<div class="container" style="text-align:center;">
+					<form method="GET" action="" >
+						
+						<h2>Select Movie</h2>
+						<select id="MovieSelection" name="movie" required>
+							<option>Loading</option>
+						</select>
+						
+						<h2>Select Cinema</h2>
+						<select id="CinemaSelection" name="cinema" required>
+							<option>Loading</option>
+						</select>
+
+						<h2>Select Session</h2>
+						<select id="SessionSelection" name="session" required>
+							<option>Loading</option>
+						</select>
+						<br><br>
+						<input type="button" value="Continue" onclick='printSeat()' class="button"/>
+					</form>			
+				</div>
+			</div>
+			<br/>
+			<div style="display:none" id="price"></div>
+
+			<div class="seat-container" id="seat-container">
+				<h2>Pick Seats</h2>
+				<form id="reservation" method="post" style="display: inline-block;">
+					<table class="seat-table">
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td style="text-align:center; color: white">A</td>
+							<td>
+								<input id="seat-A1" class="seat-select" type="checkbox" value="A1" name="seat[]" />
+								<label for="seat-A1" class="seat">1</label>
+							</td>
+							<td>
+								<input id="seat-A2" class="seat-select" type="checkbox" value="A2" name="seat[]" disabled/>
+								<label for="seat-A2" class="seat seat-unavailable">X</label>
+							</td>
+							<td>
+								<input id="seat-A3" class="seat-select" type="checkbox" value="A3" name="seat[]" />
+								<label for="seat-A3" class="seat">3</label>
+							</td>
+							<td>
+								<input id="seat-A4" class="seat-select" type="checkbox" value="A4" name="seat[]" />
+								<label for="seat-A4" class="seat">4</label>
+							</td>
+							<td>
+								<input id="seat-A5" class="seat-select" type="checkbox" value="A5" name="seat[]" />
+								<label for="seat-A5" class="seat">5</label>
+							</td>
+							<td>
+								<input id="seat-A6" class="seat-select" type="checkbox" value="A6" name="seat[]" />
+								<label for="seat-A6" class="seat">6</label>
+							</td>
+							<td>
+								<input id="seat-A7" class="seat-select" type="checkbox" value="A7" name="seat[]" />
+								<label for="seat-A7" class="seat">7</label>
+							</td>
+							<td>
+								<input id="seat-A8" class="seat-select" type="checkbox" value="A8" name="seat[]" />
+								<label for="seat-A8" class="seat">8</label>
+							</td>
+							<td style="text-align:center; color: white">A</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td style="text-align:center; color: white">B</td>
+							<td>
+								<input id="seat-B1" class="seat-select" type="checkbox" value="B1" name="seat[]" />
+								<label for="seat-B1" class="seat">1</label>
+							</td>
+							<td>
+								<input id="seat-B2" class="seat-select" type="checkbox" value="B2" name="seat[]" disabled/>
+								<label for="seat-B2" class="seat seat-unavailable">X</label>
+							</td>
+							<td>
+								<input id="seat-B3" class="seat-select" type="checkbox" value="B3" name="seat[]" disabled/>
+								<label for="seat-B3" class="seat seat-unavailable">X</label>
+							</td>
+							<td>
+								<input id="seat-B4" class="seat-select" type="checkbox" value="B4" name="seat[]" />
+								<label for="seat-B4" class="seat">4</label>
+							</td>
+							<td>
+								<input id="seat-B5" class="seat-select" type="checkbox" value="B5" name="seat[]" />
+								<label for="seat-B5" class="seat">5</label>
+							</td>
+							<td>
+								<input id="seat-B6" class="seat-select" type="checkbox" value="B6" name="seat[]" />
+								<label for="seat-B6" class="seat">6</label>
+							</td>
+							<td>
+								<input id="seat-B7" class="seat-select" type="checkbox" value="B7" name="seat[]" />
+								<label for="seat-B7" class="seat">7</label>
+							</td>
+							<td>
+								<input id="seat-B8" class="seat-select" type="checkbox" value="B8" name="seat[]" />
+								<label for="seat-B8" class="seat">8</label>
+							</td>
+							<td>
+								<input id="seat-B9" class="seat-select" type="checkbox" value="B9" name="seat[]" />
+								<label for="seat-B9" class="seat">9</label>
+							</td>
+							<td>
+								<input id="seat-B10" class="seat-select" type="checkbox" value="B10" name="seat[]"/>
+								<label for="seat-B10" class="seat">10</label>
+							</td>
+							<td>
+								<input id="seat-B11" class="seat-select" type="checkbox" value="B11" name="seat[]"/>
+								<label for="seat-B11" class="seat">11</label>
+							</td>
+							<td>
+								<input id="seat-B12" class="seat-select" type="checkbox" value="B12" name="seat[]" />
+								<label for="seat-B12" class="seat">12</label>
+							</td>
+							<td>
+								<input id="seat-B13" class="seat-select" type="checkbox" value="B13" name="seat[]" />
+								<label for="seat-B13" class="seat">13</label>
+							</td>
+							<td>
+								<input id="seat-B14" class="seat-select" type="checkbox" value="B14" name="seat[]" />
+								<label for="seat-B14" class="seat">14</label>
+							</td>
+							<td style="text-align:center; color: white">B</td>
+						</tr>
+						<tr>
+							<td style="text-align:center; color: white">C</td>
+							<td>
+								<input id="seat-C1" class="seat-select" type="checkbox" value="C1" name="seat[]" />
+								<label for="seat-C1" class="seat">1</label>
+							</td>
+							<td>
+								<input id="seat-C2" class="seat-select" type="checkbox" value="C2" name="seat[]" disabled/>
+								<label for="seat-C2" class="seat seat-unavailable">X</label>
+							</td>
+							<td>
+								<input id="seat-C3" class="seat-select" type="checkbox" value="C3" name="seat[]" disabled/>
+								<label for="seat-C3" class="seat seat-unavailable">X</label>
+							</td>
+							<td>
+								<input id="seat-C4" class="seat-select" type="checkbox" value="C4" name="seat[]" />
+								<label for="seat-C4" class="seat">4</label>
+							</td>
+							<td>
+								<input id="seat-C5" class="seat-select" type="checkbox" value="C5" name="seat[]" />
+								<label for="seat-C5" class="seat">5</label>
+							</td>
+							<td>
+								<input id="seat-C6" class="seat-select" type="checkbox" value="C6" name="seat[]" />
+								<label for="seat-C6" class="seat">6</label>
+							</td>
+							<td>
+								<input id="seat-C7" class="seat-select" type="checkbox" value="C7" name="seat[]" />
+								<label for="seat-C7" class="seat">7</label>
+							</td>
+							<td>
+								<input id="seat-C8" class="seat-select" type="checkbox" value="C8" name="seat[]" />
+								<label for="seat-C8" class="seat">8</label>
+							</td>
+							<td>
+								<input id="seat-C9" class="seat-select" type="checkbox" value="C9" name="seat[]" />
+								<label for="seat-C9" class="seat">9</label>
+							</td>
+							<td>
+								<input id="seat-C10" class="seat-select" type="checkbox" value="C10" name="seat[]"/>
+								<label for="seat-C10" class="seat">10</label>
+							</td>
+							<td>
+								<input id="seat-C11" class="seat-select" type="checkbox" value="C11" name="seat[]" disabled/>
+								<label for="seat-C11" class="seat seat-unavailable">X</label>
+							</td>
+							<td>
+								<input id="seat-C12" class="seat-select" type="checkbox" value="C12" name="seat[]" />
+								<label for="seat-C12" class="seat">12</label>
+							</td>
+							<td>
+								<input id="seat-C13" class="seat-select" type="checkbox" value="C13" name="seat[]" />
+								<label for="seat-C13" class="seat">13</label>
+							</td>
+							<td>
+								<input id="seat-C14" class="seat-select" type="checkbox" value="C14" name="seat[]" />
+								<label for="seat-C14" class="seat">14</label>
+							</td>
+							<td style="text-align:center; color: white">C</td>
+						</tr>
+						<tr>
+							<td style="text-align:center; color: white">D</td>
+							<td>
+								<input id="seat-D1" class="seat-select" type="checkbox" value="D1" name="seat[]" />
+								<label for="seat-D1" class="seat">1</label>
+							</td>
+							<td>
+								<input id="seat-D2" class="seat-select" type="checkbox" value="D2" name="seat[]"/>
+								<label for="seat-D2" class="seat">2</label>
+							</td>
+							<td>
+								<input id="seat-D3" class="seat-select" type="checkbox" value="D3" name="seat[]"/>
+								<label for="seat-D3" class="seat">3</label>
+							</td>
+							<td>
+								<input id="seat-D4" class="seat-select" type="checkbox" value="D4" name="seat[]" />
+								<label for="seat-D4" class="seat">4</label>
+							</td>
+							<td>
+								<input id="seat-D5" class="seat-select" type="checkbox" value="D5" name="seat[]" />
+								<label for="seat-D5" class="seat">5</label>
+							</td>
+							<td>
+								<input id="seat-D6" class="seat-select" type="checkbox" value="D6" name="seat[]" />
+								<label for="seat-D6" class="seat">6</label>
+							</td>
+							<td>
+								<input id="seat-D7" class="seat-select" type="checkbox" value="D7" name="seat[]" />
+								<label for="seat-D7" class="seat">7</label>
+							</td>
+							<td>
+								<input id="seat-D8" class="seat-select" type="checkbox" value="D8" name="seat[]" />
+								<label for="seat-D8" class="seat">8</label>
+							</td>
+							<td>
+								<input id="seat-D9" class="seat-select" type="checkbox" value="D9" name="seat[]" />
+								<label for="seat-D9" class="seat">9</label>
+							</td>
+							<td>
+								<input id="seat-D10" class="seat-select" type="checkbox" value="D10" name="seat[]"/>
+								<label for="seat-D10" class="seat">10</label>
+							</td>
+							<td>
+								<input id="seat-D11" class="seat-select" type="checkbox" value="D11" name="seat[]"/>
+								<label for="seat-D11" class="seat">11</label>
+							</td>
+							<td>
+								<input id="seat-D12" class="seat-select" type="checkbox" value="D12" name="seat[]" />
+								<label for="seat-D12" class="seat">12</label>
+							</td>
+							<td>
+								<input id="seat-D13" class="seat-select" type="checkbox" value="D13" name="seat[]" />
+								<label for="seat-D13" class="seat">13</label>
+							</td>
+							<td>
+								<input id="seat-D14" class="seat-select" type="checkbox" value="D14" name="seat[]" />
+								<label for="seat-D14" class="seat">14</label>
+							</td>
+							<td style="text-align:center; color: white">D</td>
+						</tr>
+						<tr>
+							<td style="text-align:center; color: white">E</td>
+							<td>
+								<input id="seat-E1" class="seat-select" type="checkbox" value="E1" name="seat[]" />
+								<label for="seat-E1" class="seat">1</label>
+							</td>
+							<td>
+								<input id="seat-E2" class="seat-select" type="checkbox" value="E2" name="seat[]"/>
+								<label for="seat-E2" class="seat">2</label>
+							</td>
+							<td>
+								<input id="seat-E3" class="seat-select" type="checkbox" value="E3" name="seat[]"/>
+								<label for="seat-E3" class="seat">3</label>
+							</td>
+							<td>
+								<input id="seat-E4" class="seat-select" type="checkbox" value="E4" name="seat[]" />
+								<label for="seat-E4" class="seat">4</label>
+							</td>
+							<td>
+								<input id="seat-E5" class="seat-select" type="checkbox" value="E5" name="seat[]" />
+								<label for="seat-E5" class="seat">5</label>
+							</td>
+							<td>
+								<input id="seat-E6" class="seat-select" type="checkbox" value="E6" name="seat[]" />
+								<label for="seat-E6" class="seat">6</label>
+							</td>
+							<td>
+								<input id="seat-E7" class="seat-select" type="checkbox" value="E7" name="seat[]" />
+								<label for="seat-E7" class="seat">7</label>
+							</td>
+							<td>
+								<input id="seat-E8" class="seat-select" type="checkbox" value="E8" name="seat[]" />
+								<label for="seat-E8" class="seat">8</label>
+							</td>
+							<td>
+								<input id="seat-E9" class="seat-select" type="checkbox" value="E9" name="seat[]" />
+								<label for="seat-E9" class="seat">9</label>
+							</td>
+							<td>
+								<input id="seat-E10" class="seat-select" type="checkbox" value="E10" name="seat[]"/>
+								<label for="seat-E10" class="seat">10</label>
+							</td>
+							<td>
+								<input id="seat-E11" class="seat-select" type="checkbox" value="E11" name="seat[]"/>
+								<label for="seat-E11" class="seat">11</label>
+							</td>
+							<td>
+								<input id="seat-E12" class="seat-select" type="checkbox" value="E12" name="seat[]" />
+								<label for="seat-E12" class="seat">12</label>
+							</td>
+							<td>
+								<input id="seat-E13" class="seat-select" type="checkbox" value="E13" name="seat[]" />
+								<label for="seat-E13" class="seat">13</label>
+							</td>
+							<td>
+								<input id="seat-E14" class="seat-select" type="checkbox" value="E14" name="seat[]" />
+								<label for="seat-E14" class="seat">14</label>
+							</td>
+							<td style="text-align:center; color: white">E</td>
+						</tr>
+						<tr>
+							<td style="text-align:center; color: white">F</td>
+							<td>
+								<input id="seat-F1" class="seat-select" type="checkbox" value="F1" name="seat[]" />
+								<label for="seat-F1" class="seat">1</label>
+							</td>
+							<td>
+								<input id="seat-F2" class="seat-select" type="checkbox" value="F2" name="seat[]"/>
+								<label for="seat-F2" class="seat">2</label>
+							</td>
+							<td>
+								<input id="seat-F3" class="seat-select" type="checkbox" value="F3" name="seat[]"/>
+								<label for="seat-F3" class="seat">3</label>
+							</td>
+							<td>
+								<input id="seat-F4" class="seat-select" type="checkbox" value="F4" name="seat[]" />
+								<label for="seat-F4" class="seat">4</label>
+							</td>
+							<td>
+								<input id="seat-F5" class="seat-select" type="checkbox" value="F5" name="seat[]" />
+								<label for="seat-F5" class="seat">5</label>
+							</td>
+							<td>
+								<input id="seat-F6" class="seat-select" type="checkbox" value="F6" name="seat[]" />
+								<label for="seat-F6" class="seat">6</label>
+							</td>
+							<td>
+								<input id="seat-F7" class="seat-select" type="checkbox" value="F7" name="seat[]" />
+								<label for="seat-F7" class="seat">7</label>
+							</td>
+							<td>
+								<input id="seat-F8" class="seat-select" type="checkbox" value="F8" name="seat[]" />
+								<label for="seat-F8" class="seat">8</label>
+							</td>
+							<td>
+								<input id="seat-F9" class="seat-select" type="checkbox" value="F9" name="seat[]" />
+								<label for="seat-F9" class="seat">9</label>
+							</td>
+							<td>
+								<input id="seat-F10" class="seat-select" type="checkbox" value="F10" name="seat[]"/>
+								<label for="seat-F10" class="seat">10</label>
+							</td>
+							<td>
+								<input id="seat-F11" class="seat-select" type="checkbox" value="F11" name="seat[]"/>
+								<label for="seat-F11" class="seat">11</label>
+							</td>
+							<td>
+								<input id="seat-F12" class="seat-select" type="checkbox" value="F12" name="seat[]" />
+								<label for="seat-F12" class="seat">12</label>
+							</td>
+							<td>
+								<input id="seat-F13" class="seat-select" type="checkbox" value="F13" name="seat[]" />
+								<label for="seat-F13" class="seat">13</label>
+							</td>
+							<td>
+								<input id="seat-F14" class="seat-select" type="checkbox" value="F14" name="seat[]" />
+								<label for="seat-F14" class="seat">14</label>
+							</td>
+							<td style="text-align:center; color: white">F</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td style="text-align:center; color: white">G</td>
+							<td>
+								<input id="seat-G1" class="seat-select" type="checkbox" value="G1" name="seat[]" />
+								<label for="seat-G1" class="seat">1</label>
+							</td>
+							<td>
+								<input id="seat-G2" class="seat-select" type="checkbox" value="G2" name="seat[]"/>
+								<label for="seat-G2" class="seat">2</label>
+							</td>
+							<td>
+								<input id="seat-G3" class="seat-select" type="checkbox" value="G3" name="seat[]"/>
+								<label for="seat-G3" class="seat">3</label>
+							</td>
+							<td>
+								<input id="seat-G4" class="seat-select" type="checkbox" value="G4" name="seat[]" />
+								<label for="seat-G4" class="seat">4</label>
+							</td>
+							<td>
+								<input id="seat-G5" class="seat-select" type="checkbox" value="G5" name="seat[]" />
+								<label for="seat-G5" class="seat">5</label>
+							</td>
+							<td>
+								<input id="seat-G6" class="seat-select" type="checkbox" value="G6" name="seat[]" />
+								<label for="seat-G6" class="seat">6</label>
+							</td>
+							<td>
+								<input id="seat-G7" class="seat-select" type="checkbox" value="G7" name="seat[]" />
+								<label for="seat-G7" class="seat">7</label>
+							</td>
+							<td>
+								<input id="seat-G8" class="seat-select" type="checkbox" value="G8" name="seat[]" />
+								<label for="seat-G8" class="seat">8</label>
+							</td>
+							<td>
+								<input id="seat-G9" class="seat-select" type="checkbox" value="G9" name="seat[]" />
+								<label for="seat-G9" class="seat">9</label>
+							</td>
+							<td>
+								<input id="seat-G10" class="seat-select" type="checkbox" value="G10" name="seat[]"/>
+								<label for="seat-G10" class="seat">10</label>
+							</td>
+							<td>
+								<input id="seat-G11" class="seat-select" type="checkbox" value="G11" name="seat[]"/>
+								<label for="seat-G11" class="seat">11</label>
+							</td>
+							<td>
+								<input id="seat-G12" class="seat-select" type="checkbox" value="G12" name="seat[]" />
+								<label for="seat-G12" class="seat">12</label>
+							</td>
+							
+							<td style="text-align:center; color: white">G</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td style="text-align:center; color: white">H</td>
+							<td>
+								<input id="seat-H1" class="seat-select" type="checkbox" value="H1" name="seat[]" />
+								<label for="seat-H1" class="seat">1</label>
+							</td>
+							<td>
+								<input id="seat-H2" class="seat-select" type="checkbox" value="H2" name="seat[]"/>
+								<label for="seat-H2" class="seat">2</label>
+							</td>
+							<td>
+								<input id="seat-H3" class="seat-select" type="checkbox" value="H3" name="seat[]"/>
+								<label for="seat-H3" class="seat">3</label>
+							</td>
+							<td>
+								<input id="seat-H4" class="seat-select" type="checkbox" value="H4" name="seat[]" />
+								<label for="seat-H4" class="seat">4</label>
+							</td>
+							<td>
+								<input id="seat-H5" class="seat-select" type="checkbox" value="H5" name="seat[]" />
+								<label for="seat-H5" class="seat">5</label>
+							</td>
+							<td>
+								<input id="seat-H6" class="seat-select" type="checkbox" value="H6" name="seat[]" />
+								<label for="seat-H6" class="seat">6</label>
+							</td>
+							<td>
+								<input id="seat-H7" class="seat-select" type="checkbox" value="H7" name="seat[]" />
+								<label for="seat-H7" class="seat">7</label>
+							</td>
+							<td>
+								<input id="seat-H8" class="seat-select" type="checkbox" value="H8" name="seat[]" />
+								<label for="seat-H8" class="seat">8</label>
+							</td>
+							<td>
+								<input id="seat-H9" class="seat-select" type="checkbox" value="H9" name="seat[]" />
+								<label for="seat-H9" class="seat">9</label>
+							</td>
+							<td>
+								<input id="seat-H10" class="seat-select" type="checkbox" value="H10" name="seat[]"/>
+								<label for="seat-H10" class="seat">10</label>
+							</td>
+							<td>
+								<input id="seat-H11" class="seat-select" type="checkbox" value="H11" name="seat[]"/>
+								<label for="seat-H11" class="seat">11</label>
+							</td>
+							<td>
+								<input id="seat-H12" class="seat-select" type="checkbox" value="H12" name="seat[]" />
+								<label for="seat-H12" class="seat">12</label>
+							</td>		
+							<td style="text-align:center; color: white">H</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td style="text-align:center; color: white">I</td>
+							<td>
+								<input id="seat-I1" class="seat-select" type="checkbox" value="I1" name="seat[]" />
+								<label for="seat-I1" class="seat">1</label>
+							</td>
+							<td>
+								<input id="seat-I2" class="seat-select" type="checkbox" value="I2" name="seat[]"/>
+								<label for="seat-I2" class="seat">2</label>
+							</td>
+							<td>
+								<input id="seat-I3" class="seat-select" type="checkbox" value="I3" name="seat[]"/>
+								<label for="seat-I3" class="seat">3</label>
+							</td>
+							<td>
+								<input id="seat-I4" class="seat-select" type="checkbox" value="I4" name="seat[]" disabled/>
+								<label for="seat-I4" class="seat seat-unavailable">X</label>
+							</td>
+							<td>
+								<input id="seat-I5" class="seat-select" type="checkbox" value="I5" name="seat[]" disabled/>
+								<label for="seat-I5" class="seat seat-unavailable">X</label>
+							</td>
+							<td>
+								<input id="seat-I6" class="seat-select" type="checkbox" value="I6" name="seat[]" disabled/>
+								<label for="seat-I6" class="seat seat-unavailable">X</label>
+							</td>
+							<td>
+								<input id="seat-I7" class="seat-select" type="checkbox" value="I7" name="seat[]" disabled/>
+								<label for="seat-I7" class="seat seat-unavailable">X</label>
+							</td>
+							<td>
+								<input id="seat-I8" class="seat-select" type="checkbox" value="I8" name="seat[]" />
+								<label for="seat-I8" class="seat">8</label>
+							</td>
+							<td>
+								<input id="seat-I9" class="seat-select" type="checkbox" value="I9" name="seat[]" />
+								<label for="seat-I9" class="seat">9</label>
+							</td>
+							<td>
+								<input id="seat-I10" class="seat-select" type="checkbox" value="I10" name="seat[]"/>
+								<label for="seat-I10" class="seat">10</label>
+							</td>
+							<td style="text-align:center; color: white">I</td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+					<br>
+				   <input type="button" value="Print Ticket" onclick='printChecked()' class="button"/>
+				</form>
+			</div>
+			<br/>
+			<div id="ticket">
+				<table style="display:inline-block; color: #222;" cellspacing="10"><div style="float:left" id="MovieImage"></div>
+					<tr>		
+						<td><i class="fa fa-film icon"></i></td> 
+						<td id="Movie" style="text-align:left"></td>
+					</tr>
+					<tr>
+						<td><i class="fas fa-map-marker-alt icon"></i></td> 
+						<td id="Location" style="text-align:left"></td>
+					</tr>
+					<tr>
+						<td><i class="far fa-clock icon"></i></td> 
+						<td id="Time" style="text-align:left"></td>
+					</tr>
+					<tr>
+						<td><i class="fas fa-chair icon"></td> 
+						<td id="Seat" style="text-align:left"></td>
+					</tr>
+					<tr>
+						<td><i class="fas fa-money-bill-wave-alt icon"></i></td> 
+						<td id="seatCount" style="text-align:left"></td>
+					</tr>
+
+					<tr><td>&nbsp;</td></tr>
+					
+					<tr>
+						<td colspan="2" class="icon">Scan QR Code<br/><br/><img src="images/qr.png" width="100" style="border-radius: 5px;"></img></td>
+					</tr>
+				</table>
+			</div> 
+		</div>
+		<div class="footer">
+			<p>&copy; 2018 AMC Cinemas. All rights reserved.</p>
+		</div>
+	</body>
+</html>
