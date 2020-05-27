@@ -594,18 +594,34 @@ img {
   padding: 0px 10px 0px 10px;
 }
 
-.theatresColumn {
-  float: left;
-  width: 20%;
-  padding: 0 10px;
+.row {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 20px;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+.row > div {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
 }
 
 .theatresCard {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   text-align: center;
-  background-color: #222;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+
+.theatresCard p {
+  color: #232323 !important;
+}
+
+.theatresCard img {
+  width:100%;
+  height:250px;
+  object-fit: cover;
 }
 
 /* Customer Orders */
